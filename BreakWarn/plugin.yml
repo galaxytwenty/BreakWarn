@@ -1,0 +1,17 @@
+name: BreakWarn
+version: 0.9
+api: 4.0.0
+main: GLX20\BreakWarn\Main
+author: GLX20
+
+commands:
+  breakwarn:
+    permission: break.warn
+    description: "§6Warnt Spieler bevor ihr Werkzeug §cZerbricht §r--- §6Hilfe: §a/breakwarn help"
+    permission-message: "Keine Berechtigung für Breakwarn"
+
+
+permissions:
+  break.warn:
+    default: true
+
