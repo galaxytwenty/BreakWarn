@@ -1,10 +1,17 @@
 # BreakWarn
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?center=true&vCenter=true&lines=GLX20;BreakWarn;GLX20;Warn+users+before+tool+get+destroyed)](.)<br>
-This plugin will warn player before tool in hand get break.<br>
-The warn is toggleable, and users can switch between warn arts.<br>
-<br>
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?center=true&vCenter=true&lines=GLX20;BreakWarn;GLX20;Warn+users+before+tool+get+destroyed)](.)
+
+This plugin will warn player before tool in hand get break.
+The warn is toggleable, and users can switch between warn arts.
+
+
 ### TODO-LIST
 - [ ] Add englisch language
-<br>
-Pocketmine-MP API4<br>
+
+
+### License:
+This Plugin has the [Apache License 2.0](/LICENSE)
+
+
+Pocketmine-MP API4
 [GLX20]
