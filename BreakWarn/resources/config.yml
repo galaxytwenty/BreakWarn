@@ -1,8 +1,8 @@
 ---
 #🅲🅾🅽🅵🅸🅶
-#
+#BreakWarn
 #Select language#
-#Available languages: (de_DE = German, en_EN = Englisch), (Default: en_EN)
+#Available languages: (de = German, en = Englisch), (Default: en)
 selectedLanguage: "en"
 
 ...
