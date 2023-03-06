@@ -4,7 +4,6 @@ branches:
 - main
 projects:
   BreakWarn:
-    path: ""
+    path: BreakWarn/
     icon: icon.png
-    php: 8.0
 ...
