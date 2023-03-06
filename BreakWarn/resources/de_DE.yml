@@ -1,0 +1,114 @@
+---
+#Deutsch/German
+breakwarnEnable: "§cBreak§aWarn §aAktiviert!"
+breakwarnDisable: "§cBreak§aWarn §4Deaktiviert!"
+standartWarn: "§6Standart Warn Art: §a§lPopup"
+breakwarnUse: "§6Nutze §a/breakwarn §6<§bWarnArt§6>"
+breakwarnTypes: "§6Warn Arten: §6(§echat§6)(§epopup§6)(§escreen§6)(§eall§6)"
+typeChat: "§6Aktuelle Warn Art: §a§lChat "
+typePopup: "§6Aktuelle Warn Art: §a§lPopup "
+typeScreen: "§6Aktuelle Warn Art: §a§lScreen "
+typeAll: "§6Aktuelle Warn Art: §a§lAll "
+typeUnknown: "§cUnbekannte §6Warnungs Art"
+
+#BreakWarnMessages
+woodenPickaxeChat: "§k§fxx§r §6Spitzhacke §cBeschädigt !!! §k§fxx§r"
+woodenPickaxePopup: "§k§fxx§r §6Spitzhacke §cBeschädigt !!! §k§fxx§r"
+woodenPickaxeScreen: "§6Spitzhacke\n§k§fxx§r §4Beschädigt !!! §k§fxx§r"
+
+stonePickaxeChat: "§k§fxx§r §7Spitzhacke §cBeschädigt !!! §k§fxx§r"
+stonePickaxePopup: "§k§fxx§r §7Spitzhacke §cBeschädigt !!! §k§fxx§r"
+stonePickaxeScreen: "§7Spitzhacke\n§k§fxx§r §4Beschädigt !!! §k§fxx§r"
+
+ironPickaxeChat: "§k§fxx§r §f§lSpitzhacke §cBeschädigt !!! §k§fxx§r"
+ironPickaxePopup: "§k§fxx§r §f§lSpitzhacke §cBeschädigt !!! §k§fxx§r"
+ironPickaxeScreen: "§f§lSpitzhacke\n§k§fxx§r §4Beschädigt !!! §k§fxx§r"
+
+goldenPickaxeChat: "§k§fxx§r §eSpitzhacke §cBeschädigt !!! §k§fxx§r"
+goldenPickaxePopup: "§k§fxx§r §eSpitzhacke §cBeschädigt !!! §k§fxx§r"
+goldenPickaxeScreen: "§eSpitzhacke\n§k§fxx§r §4Beschädigt !!! §k§fxx§r"
+
+diamondPickaxeChat: "§k§fxx§r §bSpitzhacke §cBeschädigt !!! §k§fxx§r"
+diamondPickaxePopup: "§k§fxx§r §bSpitzhacke §cBeschädigt !!! §k§fxx§r"
+diamondPickaxeScreen: "§bSpitzhacke\n§k§fxx§r §4Beschädigt !!! §k§fxx§r"
+
+woodenShovelChat: "§k§fxx§r §6Schaufel §cBeschädigt !!! §k§fxx§r"
+woodenShovelPopup: "§k§fxx§r §6Schaufel §cBeschädigt !!! §k§fxx§r"
+woodenShovelScreen: "§6Schaufel\n§k§fxx§r §4Beschädigt !!! §k§fxx§r"
+
+stoneShovelChat: "§k§fxx§r §7Schaufel §cBeschädigt !!! §k§fxx§r"
+stoneShovelPopup: "§k§fxx§r §7Schaufel §cBeschädigt !!! §k§fxx§r"
+stoneShovelScreen: "§7Schaufel\n§k§fxx§r §4Beschädigt !!! §k§fxx§r"
+
+ironShovelChat: "§k§fxx§r §f§lSchaufel §cBeschädigt !!! §k§fxx§r"
+ironShovelPopup: "§k§fxx§r §f§lSchaufel §cBeschädigt !!! §k§fxx§r"
+ironShovelScreen: "§f§lSchaufel\n§k§fxx§r §4Beschädigt !!! §k§fxx§r"
+
+goldenShovelChat: "§k§fxx§r §eSchaufel §cBeschädigt !!! §k§fxx§r"
+goldenShovelPopup: "§k§fxx§r §eSchaufel §cBeschädigt !!! §k§fxx§r"
+goldenShovelScreen: "§eSchaufel\n§k§fxx§r §4Beschädigt !!! §k§fxx§r"
+
+diamondShovelChat: "§k§fxx§r §bSchaufel §cBeschädigt !!! §k§fxx§r"
+diamondShovelPopup: "§k§fxx§r §bSchaufel §cBeschädigt !!! §k§fxx§r"
+diamondShovelScreen: "§bSchaufel\n§k§fxx§r §4Beschädigt !!! §k§fxx§r"
+
+woodenHoeChat: "§k§fxx§r §6Hacke §cBeschädigt !!! §k§fxx§r"
+woodenHoePopup: "§k§fxx§r §6Hacke §cBeschädigt !!! §k§fxx§r"
+woodenHoeScreen: "§6Hacke\n§k§fxx§r §4Beschädigt !!! §k§fxx§r"
+
+stoneHoeChat: "§k§fxx§r §7Hacke §cBeschädigt !!! §k§fxx§r"
+stoneHoePopup: "§k§fxx§r §7Hacke §cBeschädigt !!! §k§fxx§r"
+stoneHoeScreen: "§7Hacke\n§k§fxx§r §4Beschädigt !!! §k§fxx§r"
+
+ironHoeChat: "§k§fxx§r §f§lHacke§r §cBeschädigt !!! §k§fxx§r"
+ironHoePopup: "§k§fxx§r §f§lHacke§r §cBeschädigt !!! §k§fxx§r"
+ironHoeScreen: "§f§lHacke§r\n§k§fxx§r §4Beschädigt !!! §k§fxx§r"
+
+goldenHoeChat: "§k§fxx§r §eHacke §cBeschädigt !!! §k§fxx§r"
+goldenHoePopup: "§k§fxx§r §eHacke §cBeschädigt !!! §k§fxx§r"
+goldenHoeScreen: "§eHacke\n§k§fxx§r §4Beschädigt !!! §k§fxx§r"
+
+diamondHoeChat: "§k§fxx§r §bHacke §cBeschädigt !!! §k§fxx§r"
+diamondHoePopup: "§k§fxx§r §bHacke §cBeschädigt !!! §k§fxx§r"
+diamondHoeScreen: "§bHacke\n§k§fxx§r §4Beschädigt !!! §k§fxx§r"
+
+woodenAxeChat: "§k§fxx§r §6Axt §cBeschädigt !!! §k§fxx§r"
+woodenAxePopup: "§k§fxx§r §6Axt §cBeschädigt !!! §k§fxx§r"
+woodenAxeScreen: "§6Axt\n§k§fxx§r §4Beschädigt !!! §k§fxx§r"
+
+stoneAxeChat: "§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r"
+stoneAxePopup: "§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r"
+stoneAxeScreen: "§7Axt\n§k§fxx§r §4Beschädigt !!! §k§fxx§r"
+
+ironAxeChat: "§k§fxx§r §f§lAxt§r §cBeschädigt !!! §k§fxx§r"
+ironAxePopup: "§k§fxx§r §f§lAxt§r §cBeschädigt !!! §k§fxx§r"
+ironAxeScreen: "§f§lAxt§r\n§k§fxx§r §4Beschädigt !!! §k§fxx§r"
+
+goldenAxeChat: "§k§fxx§r §eAxt §cBeschädigt !!! §k§fxx§r"
+goldenAxePopup: "§k§fxx§r §eAxt §cBeschädigt !!! §k§fxx§r"
+goldenAxeScreen: "§eAxt\n§k§fxx§r §4Beschädigt !!! §k§fxx§r"
+
+diamondAxeChat: "§k§fxx§r §bAxt §cBeschädigt !!! §k§fxx§r"
+diamondAxePopup: "§k§fxx§r §bAxt §cBeschädigt !!! §k§fxx§r"
+diamondAxeScreen: "§bAxt\n§k§fxx§r §4Beschädigt !!! §k§fxx§r"
+
+woodenSwordChat: "§k§fxx§r §6Schwert §cBeschädigt !!! §k§fxx§r"
+woodenSwordPopup: "§k§fxx§r §6Schwert §cBeschädigt !!! §k§fxx§r"
+woodenSwordScreen: "§6Schwert\n§k§fxx§r §4Beschädigt !!! §k§fxx§r"
+
+stoneSwordChat: "§k§fxx§r §7Schwert §cBeschädigt !!! §k§fxx§r"
+stoneSwordPopup: "§k§fxx§r §7Schwert §cBeschädigt !!! §k§fxx§r"
+stoneSwordScreen: "§7Schwert\n§k§fxx§r §4Beschädigt !!! §k§fxx§r"
+
+ironSwordChat: "§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r"
+ironSwordPopup: "§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r"
+ironSwordScreen: "§f§lSchwert§r\n§k§fxx§r §4Beschädigt !!! §k§fxx§r"
+
+goldenSwordChat: "§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r"
+goldenSwordPopup: "§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r"
+goldenSwordScreen: "§eSchwert\n§k§fxx§r §4Beschädigt !!! §k§fxx§r"
+
+diamondSwordChat: "§k§fxx§r §bSchwert §cBeschädigt !!! §k§fxx§r"
+diamondSwordPopup: "§k§fxx§r §bSchwert §cBeschädigt !!! §k§fxx§r"
+diamondSwordScreen: "§bSchwert\n§k§fxx§r §4Beschädigt !!! §k§fxx§r"
+...
