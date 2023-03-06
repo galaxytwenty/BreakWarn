@@ -6,12 +6,12 @@ author: GLX20
 
 commands:
   breakwarn:
-    permission: break.warn
-    description: "§6Warnt Spieler bevor ihr Werkzeug §cZerbricht §r--- §6Hilfe: §a/breakwarn help"
-    permission-message: "Keine Berechtigung für Breakwarn"
+    permission: breakwarn.allow
+    description: "Warns players before their tool Breaks --- Help: /breakwarn help"
+    permission-message: "No permission for Breakwarn"
 
 
 permissions:
-  break.warn:
+  breakwarn.allow:
     default: true
 
