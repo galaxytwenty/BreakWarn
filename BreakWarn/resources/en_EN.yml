@@ -2,14 +2,14 @@
 #Englisch
 breakwarnEnable: "§cBreak§aWarn §aEnabled!"
 breakwarnDisable: "§cBreak§aWarn §4Disabled!"
-standartWarn: "§6Standart warn: §a§lPopup"
-breakwarnUse: "§6Use §a/breakwarn §6<§bWarnType§6>"
-breakwarnTypes: "§6Warn types: §6(§echat§6)(§epopup§6)(§escreen§6)(§eall§6)"
-typeChat: "§6Current warn type: §a§lChat "
-typePopup: "§6Current warn type: §a§lPopup "
-typeScreen: "§6Current warn type: §a§lScreen "
-typeAll: "§6Current warn type: §a§lAll "
-typeUnknown: "§cUnknown §6warn Type"
+standartWarn: "§6Default warntype: §a§lPopup"
+breakwarnUse: "§6Use §a/breakwarn §6<§bwarntype§6>"
+breakwarnTypes: "§6Available warntypes: §6(§echat§6)(§epopup§6)(§escreen§6)(§eall§6)"
+typeChat: "§6Current warntype: §a§lChat "
+typePopup: "§6Current warntype: §a§lPopup "
+typeScreen: "§6Current warntype: §a§lScreen "
+typeAll: "§6Current warntype: §a§lAll "
+typeUnknown: "§cUnknown §6warntype"
 
 #BreakWarnMessages
 woodenPickaxeChat: "§k§fxx§r §6Pickaxe §cDamaged !!! §k§fxx§r"
