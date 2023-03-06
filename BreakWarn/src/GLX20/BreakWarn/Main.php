@@ -36,7 +36,6 @@ class Main extends PluginBase implements Listener
     public function onEnable() : void {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $this->breakwarncfg = new Config($this->getDataFolder()."BreakWarnToogle.yml");
-        $this->getLogger()->info("§4§l[BreakWarn] §aAktiviert.");
     }
 
 
@@ -4203,9 +4202,5 @@ class Main extends PluginBase implements Listener
             }
         }
         return false;
-    }
-
-    public function onDisable() : void{
-        $this->getLogger()->info("§4§l[BreakWarn] §cDeaktiviert");
     }
 }
