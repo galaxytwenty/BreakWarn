@@ -11,7 +11,7 @@ typeScreen: "§6Aktuelle Warn Art: §a§lScreen "
 typeAll: "§6Aktuelle Warn Art: §a§lAll "
 typeUnknown: "§cUnbekannte §6Warnungs Art"
 
-#BreakWarnMessages
+#BreakWarn Messages / BreakWarn Nachrichten
 woodenPickaxeChat: "§k§fxx§r §6Spitzhacke §cBeschädigt !!! §k§fxx§r"
 woodenPickaxePopup: "§k§fxx§r §6Spitzhacke §cBeschädigt !!! §k§fxx§r"
 woodenPickaxeScreen: "§6Spitzhacke\n§k§fxx§r §4Beschädigt !!! §k§fxx§r"
