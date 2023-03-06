@@ -7,12 +7,13 @@ The warn is toggleable, and users can switch between warn arts.
 [![](https://poggit.pmmp.io/shield.state/BreakWarn)](https://poggit.pmmp.io/p/BreakWarn)
 
 ### TODO-LIST
-- [x] Add englisch language
+- [x] Add englisch language 
 
 
 ### License:
 This Plugin has the [Apache License 2.0](/LICENSE)
 
+Suggestions ?, let me know
 
 Pocketmine-MP API4
 [GLX20]
