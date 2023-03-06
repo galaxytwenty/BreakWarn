@@ -6,10 +6,17 @@ The warn is toggleable, and users can switch between warn arts.
 
 [![](https://poggit.pmmp.io/shield.state/BreakWarn)](https://poggit.pmmp.io/p/BreakWarn)
 
-### TODO-LIST
-- [x] Add englisch language 
+### FEATURE-List
+- [x] Switch language via config 
 - [x] All output messages are customizable
 - [x] Different messages for different tooltypes
+- [x] Switchable warntypes (msg,popup,screen,all)
+- [x] Warn is toggleable
+
+
+### TODO-List
+- [ ] Add BreakWarn per Tool (Tools can have BreakWarn)
+- [ ] Add BreakGuard Option (Make tool useless before breaks)
 
 ### License:
 This Plugin has the [Apache License 2.0](/LICENSE)
