@@ -7,7 +7,7 @@ The warn is toggleable, and users can switch between warn arts.
 [![](https://poggit.pmmp.io/shield.state/BreakWarn)](https://poggit.pmmp.io/p/BreakWarn)
 
 ### TODO-LIST
-- [ ] Add englisch language
+- [x] Add englisch language
 
 
 ### License:
