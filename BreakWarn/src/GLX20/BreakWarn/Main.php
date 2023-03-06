@@ -527,7 +527,6 @@ class Main extends PluginBase implements Listener
             }
 
             if ($event->getItem() instanceof Sword && $event->getItem()->getTier() === ToolTier::WOOD()) {
-                $player->sendMessage($handMeta);
                 if ($handMeta >= 50) {
                     if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat") {
                         $player->sendMessage($this->messages->get("woodenSwordChat"));
