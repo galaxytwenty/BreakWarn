@@ -9,7 +9,7 @@ The warn is toggleable, and users can switch between warn arts.
 ### TODO-LIST
 - [x] Add englisch language 
 - [x] All output messages are customizable
-- [x] Different mesages for different tooltypes
+- [x] Different messages for different tooltypes
 
 ### License:
 This Plugin has the [Apache License 2.0](/LICENSE)
