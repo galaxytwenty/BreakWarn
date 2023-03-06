@@ -445,7 +445,7 @@ class Main extends PluginBase implements Listener
                 }
             }
             if ($event->getItem() instanceof Axe && $event->getItem()->getTier() === ToolTier::STONE()) {
-                if ($handMeta === 127) {
+                if ($handMeta >= 126) {
                     if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat") {
                         $player->sendMessage($this->messages->get("stoneAxeChat"));
 
@@ -464,69 +464,6 @@ class Main extends PluginBase implements Listener
                     }
                 }
 
-                if ($handMeta === 128) {
-                    if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat") {
-                        $player->sendMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup") {
-                        $player->sendActionBarMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen") {
-                        $player->sendTitle("§7Axt\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all") {
-                        $player->sendTitle("§7Axt\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                        $player->sendActionBarMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                        $player->sendMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                    } else {
-                        return false;
-                    }
-                }
-
-                if ($handMeta === 129) {
-                    if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat") {
-                        $player->sendMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup") {
-                        $player->sendActionBarMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen") {
-                        $player->sendTitle("§7Axt\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all") {
-                        $player->sendTitle("§7Axt\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                        $player->sendActionBarMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                        $player->sendMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                    } else {
-                        return false;
-                    }
-                }
-
-                if ($handMeta === 130) {
-                    if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat") {
-                        $player->sendMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup") {
-                        $player->sendActionBarMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen") {
-                        $player->sendTitle("§7Axt\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all") {
-                        $player->sendTitle("§7Axt\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                        $player->sendActionBarMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                        $player->sendMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                    } else {
-                        return false;
-                    }
-                }
-
-                if ($handMeta === 131) {
-                    if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat") {
-                        $player->sendMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup") {
-                        $player->sendActionBarMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen") {
-                        $player->sendTitle("§7Axt\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all") {
-                        $player->sendTitle("§7Axt\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                        $player->sendActionBarMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                        $player->sendMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                    } else {
-                        return false;
-                    }
-                }
             }
             if ($event->getItem() instanceof Axe && $event->getItem()->getTier() === ToolTier::IRON()) {
                 if ($handMeta >= 245) {
@@ -649,70 +586,6 @@ class Main extends PluginBase implements Listener
                         return false;
                     }
                 }
-
-                if ($handMeta === 247) {
-                    if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat") {
-                        $player->sendMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup") {
-                        $player->sendActionBarMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen") {
-                        $player->sendTitle("§f§lSchwert§r\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all") {
-                        $player->sendTitle("§f§lSchwert§r\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                        $player->sendActionBarMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                        $player->sendMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                    } else {
-                        return false;
-                    }
-                }
-
-                if ($handMeta === 248) {
-                    if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat") {
-                        $player->sendMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup") {
-                        $player->sendActionBarMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen") {
-                        $player->sendTitle("§f§lSchwert§r\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all") {
-                        $player->sendTitle("§f§lSchwert§r\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                        $player->sendActionBarMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                        $player->sendMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                    } else {
-                        return false;
-                    }
-                }
-
-                if ($handMeta === 249) {
-                    if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat") {
-                        $player->sendMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup") {
-                        $player->sendActionBarMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen") {
-                        $player->sendTitle("§f§lSchwert§r\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all") {
-                        $player->sendTitle("§f§lSchwert§r\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                        $player->sendActionBarMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                        $player->sendMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                    } else {
-                        return false;
-                    }
-                }
-
-                if ($handMeta === 250) {
-                    if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat") {
-                        $player->sendMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup") {
-                        $player->sendActionBarMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen") {
-                        $player->sendTitle("§f§lSchwert§r\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all") {
-                        $player->sendTitle("§f§lSchwert§r\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                        $player->sendActionBarMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                        $player->sendMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                    } else {
-                        return false;
-                    }
-                }
             }
             if ($event->getItem() instanceof Sword && $event->getItem()->getTier() === ToolTier::GOLD()) {
                 if ($handMeta >= 27) {
@@ -729,70 +602,6 @@ class Main extends PluginBase implements Listener
                         $player->sendMessage($this->messages->get("goldenSwordChat"));
                         $player->sendActionBarMessage($this->messages->get("goldenSwordPopup"));
                         $player->sendTitle($this->messages->get("goldenSwordScreen"));
-                    } else {
-                        return false;
-                    }
-                }
-
-                if ($handMeta === 29) {
-                    if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat") {
-                        $player->sendMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup") {
-                        $player->sendActionBarMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen") {
-                        $player->sendTitle("§eSchwert\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all") {
-                        $player->sendTitle("§eSchwert\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                        $player->sendActionBarMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                        $player->sendMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                    } else {
-                        return false;
-                    }
-                }
-
-                if ($handMeta === 30) {
-                    if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat") {
-                        $player->sendMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup") {
-                        $player->sendActionBarMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen") {
-                        $player->sendTitle("§eSchwert\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all") {
-                        $player->sendTitle("§eSchwert\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                        $player->sendActionBarMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                        $player->sendMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                    } else {
-                        return false;
-                    }
-                }
-
-                if ($handMeta === 31) {
-                    if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat") {
-                        $player->sendMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup") {
-                        $player->sendActionBarMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen") {
-                        $player->sendTitle("§eSchwert\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all") {
-                        $player->sendTitle("§eSchwert\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                        $player->sendActionBarMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                        $player->sendMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                    } else {
-                        return false;
-                    }
-                }
-
-                if ($handMeta === 32) {
-                    if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat") {
-                        $player->sendMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup") {
-                        $player->sendActionBarMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen") {
-                        $player->sendTitle("§eSchwert\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all") {
-                        $player->sendTitle("§eSchwert\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                        $player->sendActionBarMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                        $player->sendMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
                     } else {
                         return false;
                     }
@@ -1176,69 +985,6 @@ class Main extends PluginBase implements Listener
                     }
                 }
 
-                if ($handMeta === 128) {
-                    if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat") {
-                        $player->sendMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup") {
-                        $player->sendActionBarMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen") {
-                        $player->sendTitle("§7Axt\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all") {
-                        $player->sendTitle("§7Axt\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                        $player->sendActionBarMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                        $player->sendMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                    } else {
-                        return false;
-                    }
-                }
-
-                if ($handMeta === 129) {
-                    if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat") {
-                        $player->sendMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup") {
-                        $player->sendActionBarMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen") {
-                        $player->sendTitle("§7Axt\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all") {
-                        $player->sendTitle("§7Axt\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                        $player->sendActionBarMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                        $player->sendMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                    } else {
-                        return false;
-                    }
-                }
-
-                if ($handMeta === 130) {
-                    if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat") {
-                        $player->sendMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup") {
-                        $player->sendActionBarMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen") {
-                        $player->sendTitle("§7Axt\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all") {
-                        $player->sendTitle("§7Axt\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                        $player->sendActionBarMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                        $player->sendMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                    } else {
-                        return false;
-                    }
-                }
-
-                if ($handMeta === 131) {
-                    if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat") {
-                        $player->sendMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup") {
-                        $player->sendActionBarMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen") {
-                        $player->sendTitle("§7Axt\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all") {
-                        $player->sendTitle("§7Axt\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                        $player->sendActionBarMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                        $player->sendMessage("§k§fxx§r §7Axt §cBeschädigt !!! §k§fxx§r");
-                    } else {
-                        return false;
-                    }
-                }
             }
             if ($handItem instanceof Axe && $handItem->getTier() === ToolTier::IRON()) {
                 if ($handMeta >= 245) {
@@ -1360,70 +1106,6 @@ class Main extends PluginBase implements Listener
                         return false;
                     }
                 }
-
-                if ($handMeta === 247) {
-                    if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat") {
-                        $player->sendMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup") {
-                        $player->sendActionBarMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen") {
-                        $player->sendTitle("§f§lSchwert§r\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all") {
-                        $player->sendTitle("§f§lSchwert§r\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                        $player->sendActionBarMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                        $player->sendMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                    } else {
-                        return false;
-                    }
-                }
-
-                if ($handMeta === 248) {
-                    if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat") {
-                        $player->sendMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup") {
-                        $player->sendActionBarMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen") {
-                        $player->sendTitle("§f§lSchwert§r\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all") {
-                        $player->sendTitle("§f§lSchwert§r\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                        $player->sendActionBarMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                        $player->sendMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                    } else {
-                        return false;
-                    }
-                }
-
-                if ($handMeta === 249) {
-                    if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat") {
-                        $player->sendMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup") {
-                        $player->sendActionBarMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen") {
-                        $player->sendTitle("§f§lSchwert§r\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all") {
-                        $player->sendTitle("§f§lSchwert§r\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                        $player->sendActionBarMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                        $player->sendMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                    } else {
-                        return false;
-                    }
-                }
-
-                if ($handMeta === 250) {
-                    if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat") {
-                        $player->sendMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup") {
-                        $player->sendActionBarMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen") {
-                        $player->sendTitle("§f§lSchwert§r\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all") {
-                        $player->sendTitle("§f§lSchwert§r\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                        $player->sendActionBarMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                        $player->sendMessage("§k§fxx§r §f§lSchwert§r §cBeschädigt !!! §k§fxx§r");
-                    } else {
-                        return false;
-                    }
-                }
             }
             if ($handItem instanceof Sword && $handItem->getTier() === ToolTier::GOLD()) {
                 if ($handMeta >= 27) {
@@ -1445,69 +1127,6 @@ class Main extends PluginBase implements Listener
                     }
                 }
 
-                if ($handMeta === 29) {
-                    if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat") {
-                        $player->sendMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup") {
-                        $player->sendActionBarMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen") {
-                        $player->sendTitle("§eSchwert\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all") {
-                        $player->sendTitle("§eSchwert\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                        $player->sendActionBarMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                        $player->sendMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                    } else {
-                        return false;
-                    }
-                }
-
-                if ($handMeta === 30) {
-                    if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat") {
-                        $player->sendMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup") {
-                        $player->sendActionBarMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen") {
-                        $player->sendTitle("§eSchwert\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all") {
-                        $player->sendTitle("§eSchwert\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                        $player->sendActionBarMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                        $player->sendMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                    } else {
-                        return false;
-                    }
-                }
-
-                if ($handMeta === 31) {
-                    if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat") {
-                        $player->sendMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup") {
-                        $player->sendActionBarMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen") {
-                        $player->sendTitle("§eSchwert\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all") {
-                        $player->sendTitle("§eSchwert\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                        $player->sendActionBarMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                        $player->sendMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                    } else {
-                        return false;
-                    }
-                }
-
-                if ($handMeta === 32) {
-                    if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat") {
-                        $player->sendMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup") {
-                        $player->sendActionBarMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen") {
-                        $player->sendTitle("§eSchwert\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                    } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all") {
-                        $player->sendTitle("§eSchwert\n§k§fxx§r §4Beschädigt !!! §k§fxx§r");
-                        $player->sendActionBarMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                        $player->sendMessage("§k§fxx§r §eSchwert §cBeschädigt !!! §k§fxx§r");
-                    } else {
-                        return false;
-                    }
-                }
             }
             if ($handItem instanceof Sword && $handItem->getTier() === ToolTier::DIAMOND()) {
                 if ($handMeta >= 1556) {
