@@ -137,7 +137,8 @@ final class Main extends PluginBase implements Listener
         $this->sendThingy($handItem);
     }
 
-    private function sendThingy(TieredTool $item) : void {
+    private function sendThingy(Player $player, TieredTool $item) : void {
+        $playerName = $player->getName();
         $tierName = match($event->getItem()->getTier()) {
             ToolTier::WOOD() => "wooden",
             ToolTier::STONE() => "stone",
