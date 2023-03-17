@@ -1,8 +1,12 @@
 ---
 #🅲🅾🅽🅵🅸🅶
-#BreakWarn
+#
 #Select language#
-#Available languages: (de = German, en = Englisch), (Default: en)
+#Available languages: (de_DE = German, en_EN = Englisch), (Default: en_EN)
 selectedLanguage: "en"
+##Available BreakWarn Modes: (command, tool)
+#command = All players with permission can have breakwarn with all tools
+#tool = Only tools with BreakWarn-NBT shows BreakWarn Warns
+breakwarn_mode: "command"
 
 ...
