@@ -15,8 +15,10 @@ The warn is toggleable, and users can switch between warn arts.
 
 
 ### TODO-List
-- [ ] Add BreakWarn per Tool (Tools can have BreakWarn)
+- [x] Add BreakWarn per Tool (Tools can have BreakWarn)
 - [ ] Add BreakGuard Option (Make tool useless before breaks)
+- [ ] Add shear
+
 
 ### License:
 This Plugin has the [Apache License 2.0](/LICENSE)
