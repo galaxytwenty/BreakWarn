@@ -50,7 +50,7 @@ final class Main extends PluginBase implements Listener
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool
     {
         $player = $sender->getName();
-      //  if (!($sender instanceof Player)) return false;
+        if (!($sender instanceof Player)) return false;
         if($this->config->get("breakwarn_mode") === "command") {
             if ($command->getName() === "breakwarn") {
                 if (!$sender->hasPermission("breakwarn.allow")) return false;
@@ -110,7 +110,7 @@ final class Main extends PluginBase implements Listener
                 }
             }
         }elseif ($this->config->get("breakwarn_mode") === "tool"){
-            return (!$sender->hasPermission("breakwarn.allow")) ? false : true;
+            if (!$sender->hasPermission("breakwarn.tool")) return false;
             if($command->getName() === "breakwarn") {
                 $item = $sender->getInventory()->getItemInHand();
                 if (isset($args[1])) {
