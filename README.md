@@ -5,6 +5,7 @@ This plugin will warn player before tool in hand get break.
 The warn is toggleable, and users can switch between warn arts.
 
 [![](https://poggit.pmmp.io/shield.state/BreakWarn)](https://poggit.pmmp.io/p/BreakWarn)
+[![](https://poggit.pmmp.io/shield.api/BreakWarn)](https://poggit.pmmp.io/p/BreakWarn)
 
 ### FEATURE-List
 - [x] Switch language via config 
