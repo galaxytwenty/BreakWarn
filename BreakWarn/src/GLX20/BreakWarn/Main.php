@@ -2,6 +2,7 @@
 declare(strict_types=1);
 namespace GLX20\BreakWarn;
 
+use falkirks\minereset\exception\InvalidStateException;
 use pocketmine\block\BlockToolType;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
@@ -33,24 +34,26 @@ final class Main extends PluginBase implements Listener
         $this->breakwarncfg = new Config($this->getDataFolder()."BreakWarnToogle.yml");
         $this->saveResource("config.yml");
         $this->config = new Config($this->getDataFolder() . "config.yml", 2);
-        if($this->config->get("selectedLanguage") === "de"){
-            $this->saveResource("de_DE.yml");
-            $this->messages = new Config($this->getDataFolder() . "de_DE.yml", 2);
+        $selectedLanguage = $this->config->get("selectedLanguage");
+        if ($selectedLanguage === "de") {
+            $this->loadLanguageFile("de_DE");
+        } elseif ($selectedLanguage === "en") {
+            $this->loadLanguageFile("en_EN");
         }
-        if($this->config->get("selectedLanguage") === "en"){
-            $this->saveResource("en_EN.yml");
-            $this->messages = new Config($this->getDataFolder() . "en_EN.yml", 2);
-        }
+    }
+
+    private function loadLanguageFile(string $langCode) : void {
+        $this->saveResource($langCode . ".yml");
+        $this->messages = new Config($this->getDataFolder() . $langCode . ".yml", 2);
     }
 
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool
     {
         $player = $sender->getName();
+      //  if (!($sender instanceof Player)) return false;
         if($this->config->get("breakwarn_mode") === "command") {
             if ($command->getName() === "breakwarn") {
-                if (!$sender->hasPermission("breakwarn.allow")) {
-                    return false;
-                }
+                if (!$sender->hasPermission("breakwarn.allow")) return false;
                 if (empty($args[0])) {
                     if (empty($this->breakwarncfg->get($player))) {
                         $this->breakwarncfg->set($player, "enabled");
@@ -61,77 +64,75 @@ final class Main extends PluginBase implements Listener
                         return false;
                     }
                     if ($this->breakwarncfg->get($player) === "enabled") {
-                        $this->breakwarncfg->set($player, "disable");
-                        $this->breakwarncfg->save();
-                        $sender->sendMessage($this->messages->get("breakwarnDisable"));
-                        return false;
+                        $newValue = "disable";
+                        $message = "breakwarnDisable";
+                    }else{
+                        $newValue = "enabled";
+                        $message = "breakwarnEnable";
                     }
-
-                    if ($this->breakwarncfg->get($player) === "disable") {
-                        $this->breakwarncfg->set($player, "enabled");
-                        $this->breakwarncfg->save();
-                        $sender->sendMessage($this->messages->get("breakwarnEnable"));
-                        return false;
-                    }
-                } else {
+                    $this->breakwarncfg->set($player, $newValue);
+                    $this->breakwarncfg->save();
+                    $sender->sendMessage($this->messages->get($message));
+                    return false;
+                }else{
                     if (isset($args[1])) {
                         $sender->sendMessage($this->messages->get("breakwarnUse"));
                         $sender->sendMessage($this->messages->get("breakwarnTypes"));
                         return false;
                     }
-                    if ($args[0] === "chat") {
-                        $this->breakwarncfg->set("$player" . "_displayWarn", "chat");
-                        $sender->sendMessage($this->messages->get("typeChat"));
-                        $this->breakwarncfg->save();
-                        return false;
-                    } elseif ($args[0] === "popup") {
-                        $this->breakwarncfg->set("$player" . "_displayWarn", "popup");
-                        $sender->sendMessage($this->messages->get("typePopup"));
-                        $this->breakwarncfg->save();
-                        return false;
-                    } elseif ($args[0] === "screen") {
-                        $this->breakwarncfg->set("$player" . "_displayWarn", "screen");
-                        $sender->sendMessage($this->messages->get("typeScreen"));
-                        $this->breakwarncfg->save();
-                        return false;
-                    } elseif ($args[0] === "all") {
-                        $this->breakwarncfg->set("$player" . "_displayWarn", "all");
-                        $sender->sendMessage($this->messages->get("typeAll"));
-                        $this->breakwarncfg->save();
-                        return false;
-                    } elseif ($args[0] === "help") {
-                        $sender->sendMessage($this->messages->get("breakwarnUse"));
-                        $sender->sendMessage($this->messages->get("breakwarnTypes"));
-                    } else {
-                        $sender->sendMessage($this->messages->get("typeUnknown"));
-                        return false;
+                    switch ($args[0]) {
+                        case "chat":
+                            $this->breakwarncfg->set("$player" . "_displayWarn", "chat");
+                            $sender->sendMessage($this->messages->get("typeChat"));
+                            break;
+                        case "popup":
+                            $this->breakwarncfg->set("$player" . "_displayWarn", "popup");
+                            $sender->sendMessage($this->messages->get("typePopup"));
+                            break;
+                        case "screen":
+                            $this->breakwarncfg->set("$player" . "_displayWarn", "screen");
+                            $sender->sendMessage($this->messages->get("typeScreen"));
+                            break;
+                        case "all":
+                            $this->breakwarncfg->set("$player" . "_displayWarn", "all");
+                            $sender->sendMessage($this->messages->get("typeAll"));
+                            break;
+                        case "help":
+                            $sender->sendMessage($this->messages->get("breakwarnUse"));
+                            $sender->sendMessage($this->messages->get("breakwarnTypes"));
+                            break;
+                        default:
+                            $sender->sendMessage($this->messages->get("typeUnknown"));
+                            break;
                     }
+                    $this->breakwarncfg->save();
+                    return false;
                 }
-
             }
         }elseif ($this->config->get("breakwarn_mode") === "tool"){
-            if (!$sender->hasPermission("breakwarn.tool")) {
-                return false;
-            }
-
-            if($command->getName() === "breakwarn" && $sender instanceof Player) {
+            return (!$sender->hasPermission("breakwarn.allow")) ? false : true;
+            if($command->getName() === "breakwarn") {
                 $item = $sender->getInventory()->getItemInHand();
-                $namedTag = $item->getNamedTag();
-                    if (isset($args[1])) {
-                        $sender->sendMessage($this->messages->get("breakwarnUseTool"));
-                        $sender->sendMessage($this->messages->get("breakwarnTypes"));
-                        return false;
-                    }
-                    if ($args[0] === "chat") {
+                if (isset($args[1])) {
+                    $sender->sendMessage($this->messages->get("breakwarnUseTool"));
+                    $sender->sendMessage($this->messages->get("breakwarnTypes"));
+                    return false;
+                }
+                switch ($args[0]) {
+                    case "chat":
                         $value = "chat";
-                    } elseif ($args[0] === "popup") {
+                        break;
+                    case "popup":
                         $value = "popup";
-                    } elseif ($args[0] === "screen") {
+                        break;
+                    case "screen":
                         $value = "screen";
-                    } elseif ($args[0] === "all") {
+                        break;
+                    case "all":
                         $value = "all";
-                    } elseif ($args[0] === "remove") {
-                        if ($namedTag->getTag("BreakWarn") !== null) {
+                        break;
+                    case "remove":
+                        if ($item->getNamedTag()->getTag("BreakWarn") !== null) {
                             $item->getNamedTag()->removeTag("BreakWarn");
                             $lore = $item->getLore();
                             foreach ($lore as $key => $value) {
@@ -142,56 +143,54 @@ final class Main extends PluginBase implements Listener
                             $item->setLore(array_values($lore));
                             $sender->getInventory()->setItemInHand($item);
                             $sender->sendMessage($this->messages->get("removeNbt"));
-                            return false;
                         } else {
                             $sender->sendMessage($this->messages->get("notExistNbt"));
-                            return false;
                         }
-                    } elseif ($args[0] === "help") {
+                        break;
+                    case "help":
                         $sender->sendMessage($this->messages->get("breakwarnUseTool"));
                         $sender->sendMessage($this->messages->get("breakwarnTypes"));
-                        return false;
-                    } else {
+                        break;
+                    default:
                         $sender->sendMessage($this->messages->get("typeUnknown"));
+                        break;
+                }
+
+            }
+            if ($item->getNamedTag()->getTag("BreakWarn") !== null){
+                        $sender->sendMessage($this->messages->get("existNbt"));
                         return false;
                     }
-                }
-
-                if ($namedTag !== null && $namedTag->getTag("BreakWarn") !== null){
-                    $sender->sendMessage($this->messages->get("existNbt"));
-                    return false;
-                }
-                $name = "BreakWarn";
-                $lore = $item->getLore();
-                $lore[] = "BreakWarn (". $args[0] .")";
-                $item->setLore($lore);
-                $item->getNamedTag()->setString($name, $value);
-                $sender->getInventory()->setItemInHand($item);
-                $sender->sendMessage($this->messages->get("createNbt"));
-
-                return true;
-            }
+            $name = "BreakWarn";
+            $lore = $item->getLore();
+            $lore[] = "BreakWarn (". $args[0] .")";
+            $item->setLore($lore);
+            $item->getNamedTag()->setString($name, $value);
+            $player->getInventory()->setItemInHand($item);
+            $sender->sendMessage($this->messages->get("createNbt"));
         }
+        return true;
+    }
 
     public function onBlockBreak(BlockBreakEvent $event) : void
     {
         $player = $event->getPlayer();
-        $playerName = $event->getPlayer()->getName();
         $handItem = $player->getInventory()->getItemInHand();
-        $handMeta = $player->getInventory()->getItemInHand()->getMeta();
         $namedTag = $handItem->getNamedTag();
-        if ($this->breakwarncfg->get($playerName) === "disable") {
-            return;
-        }
-        if ($this->config->get("breakwarn_mode") === "tool") {
-            if ($namedTag !== null && $namedTag->getTag("BreakWarn") !== null) {
-                if ($handMeta < (0.9 * $event->getItem()->getMaxDurability())) return;
+        $maxDurability = $event->getItem()->getMaxDurability();
+
+        if ($this->breakwarncfg->get($player->getName()) === "disable") return;
+
+        if ($this->config->get("breakwarn_mode") === "tool"){
+            if($namedTag !== null && $namedTag->getTag("BreakWarn") !== null && $handItem->getMeta() >= (0.9 * $maxDurability)){
                 $this->sendThingy($player, $event->getItem());
+                return;
             }
         }
-        if ($this->config->get("breakwarn_mode") === "command") {
-            if ($handMeta < (0.9 * $event->getItem()->getMaxDurability())) return;
+
+        if ($this->config->get("breakwarn_mode") === "command" && $handItem->getMeta() >= (0.9 * $maxDurability)) {
             $this->sendThingy($player, $event->getItem());
+            return;
         }
     }
 
@@ -200,23 +199,27 @@ final class Main extends PluginBase implements Listener
         $player = $event->getDamager();
         $handItem = $player->getInventory()->getItemInHand();
         $namedTag = $handItem->getNamedTag();
-        $handMeta = $player->getInventory()->getItemInHand()->getMeta();
+        $maxDurability = $event->getItem()->getMaxDurability();
+
         if (!$player instanceof Player) return;
 
         $playerName = $player->getName();
-        if ($this->breakwarncfg->get($playerName) === "disable") {
+        if ($this->breakwarncfg->get($player->getName()) === "disable") return;
+
+        if ($this->config->get("breakwarn_mode") === "tool"){
+            if($namedTag !== null && $namedTag->getTag("BreakWarn") !== null && $handItem->getMeta() >= (0.9 * $maxDurability)){
+                $this->sendThingy($player, $event->getItem());
+                return;
+            }
+        }
+
+        if ($this->config->get("breakwarn_mode") === "command" && $handItem->getMeta() >= (0.9 * $maxDurability)) {
+            $this->sendThingy($player, $event->getItem());
             return;
         }
-        if ($namedTag !== null && $namedTag->getTag("BreakWarn") !== null){
-            if($player->getInventory()->getItemInHand()->getMeta() < (0.9 * $event->getItem()->getMaxDurability())) return;
-            $this->sendThingy($player, $handItem);
-        }
-
-        if($player->getInventory()->getItemInHand()->getMeta() < (0.9 * $event->getItem()->getMaxDurability())) return;
-        $this->sendThingy($player, $handItem);
     }
 
-    private function sendThingy(Player $player, $item) : void {
+    private function sendItemWarnings(Player $player,Tool $item, $itemType): void {
         $playerName = $player->getName();
         $tierName = match($player->getInventory()->getItemInHand()->getTier()) {
             ToolTier::WOOD() => "wooden",
@@ -225,66 +228,30 @@ final class Main extends PluginBase implements Listener
             ToolTier::GOLD() => "golden",
             ToolTier::DIAMOND() => "diamond"
         };
-        if ($item instanceof Pickaxe) {
-            if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat" or $item->getNamedTag()->getString("BreakWarn") === "chat") {
-                $player->sendMessage($this->messages->get("{$tierName}PickaxeChat"));
-            } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup" or $item->getNamedTag()->getString("BreakWarn") === "popup") {
-                $player->sendActionBarMessage($this->messages->get("{$tierName}PickaxePopup"));
-            } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen" or $item->getNamedTag()->getString("BreakWarn") === "screen") {
-                $player->sendTitle($this->messages->get("{$tierName}PickaxeScreen"));
-            } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all" or $item->getNamedTag()->getString("BreakWarn") === "all") {
-                $player->sendMessage($this->messages->get("{$tierName}PickaxeChat"));
-                $player->sendActionBarMessage($this->messages->get("{$tierName}PickaxePopup"));
-                $player->sendTitle($this->messages->get("{$tierName}PickaxeScreen"));
-            }
-        }elseif($item instanceof Shovel) {
-            if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat" or $item->getNamedTag()->getString("BreakWarn") === "chat") {
-                $player->sendMessage($this->messages->get("{$tierName}ShovelChat"));
-            } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup" or $item->getNamedTag()->getString("BreakWarn") === "popup") {
-                $player->sendActionBarMessage($this->messages->get("{$tierName}ShovelPopup"));
-            } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen" or $item->getNamedTag()->getString("BreakWarn") === "screen") {
-                $player->sendTitle($this->messages->get("{$tierName}ShovelScreen"));
-            } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all" or $item->getNamedTag()->getString("BreakWarn") === "all") {
-                $player->sendMessage($this->messages->get("{$tierName}ShovelChat"));
-                $player->sendActionBarMessage($this->messages->get("{$tierName}ShovelPopup"));
-                $player->sendTitle($this->messages->get("{$tierName}ShovelScreen"));
-            }
-        }elseif($item instanceof Hoe) {
-            if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat" or $item->getNamedTag()->getString("BreakWarn") === "chat") {
-                $player->sendMessage($this->messages->get("{$tierName}HoeChat"));
-            } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup" or $item->getNamedTag()->getString("BreakWarn") === "popup") {
-                $player->sendActionBarMessage($this->messages->get("{$tierName}HoePopup"));
-            } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen" or $item->getNamedTag()->getString("BreakWarn") === "screen") {
-                $player->sendTitle($this->messages->get("{$tierName}HoeScreen"));
-            } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all" or $item->getNamedTag()->getString("BreakWarn") === "all") {
-                $player->sendMessage($this->messages->get("{$tierName}HoeChat"));
-                $player->sendActionBarMessage($this->messages->get("{$tierName}HoePopup"));
-                $player->sendTitle($this->messages->get("{$tierName}HoeScreen"));
-            }
-        }elseif($item instanceof Axe) {
-            if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat" or $item->getNamedTag()->getString("BreakWarn") === "chat") {
-                $player->sendMessage($this->messages->get("{$tierName}AxeChat"));
-            } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup" or $item->getNamedTag()->getString("BreakWarn") === "popup") {
-                $player->sendActionBarMessage($this->messages->get("{$tierName}AxePopup"));
-            } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen" or $item->getNamedTag()->getString("BreakWarn") === "screen") {
-                $player->sendTitle($this->messages->get("{$tierName}AxeScreen"));
-            } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all" or $item->getNamedTag()->getString("BreakWarn") === "all") {
-                $player->sendMessage($this->messages->get("{$tierName}AxeChat"));
-                $player->sendActionBarMessage($this->messages->get("{$tierName}AxePopup"));
-                $player->sendTitle($this->messages->get("{$tierName}AxeScreen"));
-            }
-        }elseif($item instanceof Sword) {
-            if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat" or $item->getNamedTag()->getString("BreakWarn") === "chat") {
-                $player->sendMessage($this->messages->get("{$tierName}SwordChat"));
-            } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup" or $item->getNamedTag()->getString("BreakWarn") === "popup") {
-                $player->sendActionBarMessage($this->messages->get("{$tierName}SwordPopup"));
-            } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen" or $item->getNamedTag()->getString("BreakWarn") === "screen") {
-                $player->sendTitle($this->messages->get("{$tierName}SwordScreen"));
-            } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all" or $item->getNamedTag()->getString("BreakWarn") === "all") {
-                $player->sendMessage($this->messages->get("{$tierName}SwordChat"));
-                $player->sendActionBarMessage($this->messages->get("{$tierName}SwordPopup"));
-                $player->sendTitle($this->messages->get("{$tierName}SwordScreen"));
-            }
+
+        if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat" or ($this->config->get("breakwarn_mode") === "tool" and $item->getNamedTag()->getString("BreakWarn") === "chat")) {
+            $player->sendMessage($this->messages->get("{$tierName}{$itemType}Chat"));
+        } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup" or ($this->config->get("breakwarn_mode") === "tool" and $item->getNamedTag()->getString("BreakWarn") === "popup")) {
+            $player->sendActionBarMessage($this->messages->get("{$tierName}{$itemType}Popup"));
+        } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "screen" or ($this->config->get("breakwarn_mode") === "tool" and $item->getNamedTag()->getString("BreakWarn") === "screen")) {
+            $player->sendTitle($this->messages->get("{$tierName}{$itemType}Screen"));
+        } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "all" or ($this->config->get("breakwarn_mode") === "tool" and $item->getNamedTag()->getString("BreakWarn") === "all")) {
+            $player->sendMessage($this->messages->get("{$tierName}{$itemType}Chat"));
+            $player->sendActionBarMessage($this->messages->get("{$tierName}{$itemType}Popup"));
+            $player->sendTitle($this->messages->get("{$tierName}{$itemType}Screen"));
         }
     }
+
+    private function sendThingy(Player $player, $item): void {
+        if ($item instanceof Pickaxe) {
+            $this->sendItemWarnings($player, $item, 'Pickaxe');
+        } elseif ($item instanceof Shovel) {
+            $this->sendItemWarnings($player, $item, 'Shovel');
+        } elseif ($item instanceof Hoe) {
+            $this->sendItemWarnings($player, $item, 'Hoe');
+        } elseif ($item instanceof Axe) {
+            $this->sendItemWarnings($player, $item, 'Axe');
+        }
+    }
+
 }
