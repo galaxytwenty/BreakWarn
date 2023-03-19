@@ -1,6 +1,6 @@
 name: BreakWarn
 version: 1.1
-api: 4.0.0
+api: 4.17.0
 main: GLX20\BreakWarn\Main
 author: GLX20
 
