@@ -1,5 +1,5 @@
 ---
-#Englisch
+#Language Englisch
 breakwarnEnable: "§cBreak§aWarn §aEnabled!"
 breakwarnDisable: "§cBreak§aWarn §4Disabled!"
 standartWarn: "§6Default warntype: §a§lPopup"
