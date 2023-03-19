@@ -2,7 +2,6 @@
 declare(strict_types=1);
 namespace GLX20\BreakWarn;
 
-use falkirks\minereset\exception\InvalidStateException;
 use pocketmine\block\BlockToolType;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
