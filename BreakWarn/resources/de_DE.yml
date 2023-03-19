@@ -1,5 +1,5 @@
 ---
-#Deutsch/German
+#Language Deutsch/German
 breakwarnEnable: "§cBreak§aWarn §aAktiviert!"
 breakwarnDisable: "§cBreak§aWarn §4Deaktiviert!"
 standartWarn: "§6Standart Warn Art: §a§lPopup"
