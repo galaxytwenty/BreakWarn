@@ -119,7 +119,7 @@ class Main extends PluginBase implements Listener
             default => "unknown"
 
         };
-    }
+
         if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat" or ($this->config->get("breakwarn_mode") === "tool" and $item->getNamedTag()->getString("BreakWarn") === "chat")) {
             $player->sendMessage($this->messages->get("{$tierName}{$itemType}Chat"));
         } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup" or ($this->config->get("breakwarn_mode") === "tool" and $item->getNamedTag()->getString("BreakWarn") === "popup")) {
@@ -130,6 +130,7 @@ class Main extends PluginBase implements Listener
             $player->sendMessage($this->messages->get("{$tierName}{$itemType}Chat"));
             $player->sendActionBarMessage($this->messages->get("{$tierName}{$itemType}Popup"));
             $player->sendTitle($this->messages->get("{$tierName}{$itemType}Screen"));
+        }
         }
     }
 
