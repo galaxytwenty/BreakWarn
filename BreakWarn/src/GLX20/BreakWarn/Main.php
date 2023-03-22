@@ -87,7 +87,7 @@ class Main extends PluginBase implements Listener
         $handItem = $player->getInventory()->getItemInHand();
         $namedTag = $handItem->getNamedTag();
         if(!$handItem instanceof Tool) return ;
-        $maxDurability = $event->getItem()->getMaxDurability();
+        $maxDurability = $handItem->getMaxDurability();
 
         if (!$player instanceof Player) return;
 
@@ -96,27 +96,30 @@ class Main extends PluginBase implements Listener
 
         if ($this->config->get("breakwarn_mode") === "tool"){
             if($namedTag !== null && $namedTag->getTag("BreakWarn") !== null && $handItem->getMeta() >= (0.9 * $maxDurability)){
-                $this->sendThingy($player, $event->getItem());
+                $this->sendThingy($player, $handItem);
                 return;
             }
         }
 
         if ($this->config->get("breakwarn_mode") === "command" && $handItem->getMeta() >= (0.9 * $maxDurability)) {
-            $this->sendThingy($player, $event->getItem());
+            $this->sendThingy($player, $handItem);
             return;
         }
     }
 
     private function sendItemWarnings(Player $player,Tool $item, $itemType): void {
         $playerName = $player->getName();
+        if($player->getInventory()->getItemInHand() instanceof Tool){
         $tierName = match($player->getInventory()->getItemInHand()->getTier()) {
             ToolTier::WOOD() => "wooden",
             ToolTier::STONE() => "stone",
             ToolTier::IRON() => "iron",
             ToolTier::GOLD() => "golden",
-            ToolTier::DIAMOND() => "diamond"
-        };
+            ToolTier::DIAMOND() => "diamond",
+            default => "unknown"
 
+        };
+    }
         if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat" or ($this->config->get("breakwarn_mode") === "tool" and $item->getNamedTag()->getString("BreakWarn") === "chat")) {
             $player->sendMessage($this->messages->get("{$tierName}{$itemType}Chat"));
         } elseif ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "popup" or ($this->config->get("breakwarn_mode") === "tool" and $item->getNamedTag()->getString("BreakWarn") === "popup")) {
