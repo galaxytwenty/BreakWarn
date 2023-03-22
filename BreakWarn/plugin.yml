@@ -1,18 +1,14 @@
 name: BreakWarn
-version: 1.1
-api: 4.17.0
+version: 1.2
+api: 4.0.0
 main: GLX20\BreakWarn\Main
 author: GLX20
-
-commands:
-  breakwarn:
-    permission: breakwarn.allow
-    description: "Warns players before their tool breaks --- Help: /breakwarn help"
-    permission-message: "No permission for BreakWarn"
 
 
 permissions:
   breakwarn.allow:
     default: true
+    description: "let you use BreakWarn command mode"
   breakwarn.tool:
     default: op
+    description: "let you use BreakWarn tool mode"
