@@ -107,10 +107,10 @@ class Main extends PluginBase implements Listener
             return;
         }
     }
-/** @var TieredTool $item */
+
     private function sendItemWarnings(Player $player,Tool $item, $itemType): void {
         $playerName = $player->getName();
-        if($player->getInventory()->getItemInHand() instanceof Tool){
+        if($player->getInventory()->getItemInHand() instanceof TieredTool){
         $tierName = match($player->getInventory()->getItemInHand()->getTier()) {
             ToolTier::WOOD() => "wooden",
             ToolTier::STONE() => "stone",
