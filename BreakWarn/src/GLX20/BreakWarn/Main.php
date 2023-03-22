@@ -118,7 +118,6 @@ class Main extends PluginBase implements Listener
             ToolTier::GOLD() => "golden",
             ToolTier::DIAMOND() => "diamond",
             default => "unknown"
-
         };
 
         if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat" or ($this->config->get("breakwarn_mode") === "tool" and $item->getNamedTag()->getString("BreakWarn") === "chat")) {
