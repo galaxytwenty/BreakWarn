@@ -106,7 +106,7 @@ class Main extends PluginBase implements Listener
             return;
         }
     }
-
+/** @var TieredTool $item */
     private function sendItemWarnings(Player $player,Tool $item, $itemType): void {
         $playerName = $player->getName();
         if($player->getInventory()->getItemInHand() instanceof Tool){
