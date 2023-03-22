@@ -17,6 +17,7 @@ use pocketmine\item\Shovel;
 use pocketmine\item\Sword;
 use pocketmine\item\Tool;
 use pocketmine\item\ToolTier;
+use pocketmine\item\TieredTool;
 use pocketmine\item\VanillaItems;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\nbt\tag\StringTag;
