@@ -1,8 +1,9 @@
 ---
-#Language Englisch
+#Englisch
 breakwarnEnable: "§cBreak§aWarn §aEnabled!"
 breakwarnDisable: "§cBreak§aWarn §4Disabled!"
 standartWarn: "§6Default warntype: §a§lPopup"
+onlyOnTool: "§cBreakWarn only allows tools"
 breakwarnUse: "§6Use §a/breakwarn §6<§bwarntype§6>"
 breakwarnUseTool: "§6Use §a/breakwarn §6<§bwarntype§6> §6<§bremove§6>"
 breakwarnTypes: "§6Available warntypes: §6(§echat§6)(§epopup§6)(§escreen§6)(§eall§6)"
