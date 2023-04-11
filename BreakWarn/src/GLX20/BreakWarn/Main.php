@@ -12,12 +12,13 @@ use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\Listener;
 use pocketmine\item\Axe;
 use pocketmine\item\Hoe;
+use pocketmine\item\Item;
 use pocketmine\item\Pickaxe;
 use pocketmine\item\Shovel;
 use pocketmine\item\Sword;
+use pocketmine\item\TieredTool;
 use pocketmine\item\Tool;
 use pocketmine\item\ToolTier;
-use pocketmine\item\TieredTool;
 use pocketmine\item\VanillaItems;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\nbt\tag\StringTag;
@@ -31,6 +32,7 @@ class Main extends PluginBase implements Listener
     public $breakwarncfg;
     public $messages;
     public $config;
+    public $configversion = "1.0";
 
     public function onEnable() : void {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
@@ -50,6 +52,10 @@ class Main extends PluginBase implements Listener
             $this->loadLanguageFile("de_DE");
         } elseif ($selectedLanguage === "en") {
             $this->loadLanguageFile("en_EN");
+        }
+
+        if($this->config->get("config_version") != $this->configversion or empty($this->config->get("config_version"))){
+            $this->getServer()->getLogger()->notice("§b[BreakWarn] ".$this->messages->get("wrongversion"));
         }
     }
 
@@ -71,23 +77,29 @@ class Main extends PluginBase implements Listener
         if ($this->config->get("breakwarn_mode") === "tool"){
             if($namedTag !== null && $namedTag->getTag("BreakWarn") !== null && $handItem->getMeta() >= (0.9 * $maxDurability)){
                 $this->sendThingy($player, $event->getItem());
+                if($this->config->get("breakguard") === true){
+                    $event->cancel();
+                }
                 return;
             }
         }
 
         if ($this->config->get("breakwarn_mode") === "command" && $handItem->getMeta() >= (0.9 * $maxDurability)) {
             $this->sendThingy($player, $event->getItem());
+            if($this->config->get("breakguard") === true){
+                $event->cancel();
+            }
             return;
         }
     }
 
-    public function onAtack(EntityDamageByEntityEvent $event) : void
+    public function onAttack(EntityDamageByEntityEvent $event) : void
     {
         $attacker = $event->getDamager();
         if(!$attacker instanceof Player) return;
         $nameString = $attacker->getName();
         $player = $this->getServer()->getPlayerExact($nameString);
-         
+
         $handItem = $player->getInventory()->getItemInHand();
         $namedTag = $handItem->getNamedTag();
         if(!$handItem instanceof Tool) return;
@@ -99,12 +111,18 @@ class Main extends PluginBase implements Listener
         if ($this->config->get("breakwarn_mode") === "tool"){
             if($namedTag !== null && $namedTag->getTag("BreakWarn") !== null && $handItem->getMeta() >= (0.9 * $maxDurability)){
                 $this->sendThingy($player, $handItem);
+                if($this->config->get("breakguard_entitiy") === true){
+                    $event->cancel();
+                }
                 return;
             }
         }
 
         if ($this->config->get("breakwarn_mode") === "command" && $handItem->getMeta() >= (0.9 * $maxDurability)) {
             $this->sendThingy($player, $handItem);
+            if($this->config->get("breakguard_entitiy") === true){
+                $event->cancel();
+            }
             return;
         }
     }
@@ -119,6 +137,7 @@ class Main extends PluginBase implements Listener
             ToolTier::GOLD() => "golden",
             ToolTier::DIAMOND() => "diamond",
             default => "unknown"
+
         };
 
         if ($this->breakwarncfg->get("$playerName" . "_displayWarn") === "chat" or ($this->config->get("breakwarn_mode") === "tool" and $item->getNamedTag()->getString("BreakWarn") === "chat")) {
@@ -146,5 +165,4 @@ class Main extends PluginBase implements Listener
             $this->sendItemWarnings($player, $item, 'Axe');
         }
     }
-
 }
