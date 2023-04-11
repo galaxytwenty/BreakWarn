@@ -83,16 +83,17 @@ class Main extends PluginBase implements Listener
 
     public function onAtack(EntityDamageByEntityEvent $event) : void
     {
-        $playerString = $event->getDamager()->getNameTag();
-        $player = $this->getServer()->getPlayerExact($playerString);
+        $attacker = $event->getDamager();
+        if(!$attacker instanceof Player) return;
+        $nameString = $attacker->getName();
+        $player = $this->getServer()->getPlayerExact($nameString);
+         
         $handItem = $player->getInventory()->getItemInHand();
         $namedTag = $handItem->getNamedTag();
-        if(!$handItem instanceof Tool) return ;
+        if(!$handItem instanceof Tool) return;
         $maxDurability = $handItem->getMaxDurability();
 
         if (!$player instanceof Player) return;
-
-        $playerName = $player->getName();
         if ($this->breakwarncfg->get($player->getName()) === "disable") return;
 
         if ($this->config->get("breakwarn_mode") === "tool"){
