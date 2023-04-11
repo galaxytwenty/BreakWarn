@@ -2,6 +2,7 @@
 #Deutsch/German
 breakwarnEnable: "§cBreak§aWarn §aAktiviert!"
 breakwarnDisable: "§cBreak§aWarn §4Deaktiviert!"
+wrongversion: "§bIhre Konfiguration ist veraltet!"
 standartWarn: "§6Standart Warn Art: §a§lPopup"
 onlyOnTool: "§cBreakWarn geht nur auf Werkzeugen"
 breakwarnUse: "§6Nutze §a/breakwarn §6<§bWarnArt§6>"
