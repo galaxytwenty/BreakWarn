@@ -1,7 +1,8 @@
 ---
-#Englisch
+#English
 breakwarnEnable: "§cBreak§aWarn §aEnabled!"
 breakwarnDisable: "§cBreak§aWarn §4Disabled!"
+wrongversion: "§bYour config is out of date!"
 standartWarn: "§6Default warntype: §a§lPopup"
 onlyOnTool: "§cBreakWarn only allows tools"
 breakwarnUse: "§6Use §a/breakwarn §6<§bwarntype§6>"
