@@ -1,6 +1,8 @@
 ---
-#🅲🅾🅽🅵🅸🅶 
-#v 1.2.1
+#🅲🅾🅽🅵🅸🅶
+#
+#Do not change
+config_version: "1.0"
 #Select language#
 #Available languages: (de_DE = German, en_EN = Englisch), (Default: en_EN)
 selectedLanguage: "en"
@@ -8,5 +10,11 @@ selectedLanguage: "en"
 #command = All players with permission can have breakwarn with all tools
 #tool = Only tools with BreakWarn-NBT shows BreakWarn Warns
 breakwarn_mode: "command"
+
+#Set breakguard to true if you want the tool to become unusable before it breaks
+breakguard: true
+
+#Set breakguard_entitiy to true if you want that you can no longer attack before the tool/sword breaks
+breakguard_entitiy: true
 
 ...
