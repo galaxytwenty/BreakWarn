@@ -8,6 +8,8 @@ The warn is toggleable, and users can switch between warn arts.
 [![](https://poggit.pmmp.io/shield.state/BreakWarn)](https://poggit.pmmp.io/p/BreakWarn)
 [![](https://poggit.pmmp.io/shield.api/BreakWarn)](https://poggit.pmmp.io/p/BreakWarn)
 [![](https://poggit.pmmp.io/shield.dl.total/BreakWarn)](https://poggit.pmmp.io/p/BreakWarn)
+[![GitHub license](https://img.shields.io/badge/license-Apache-blue.svg)](
+https://github.com/galaxytwenty/BreakWarn/blob/main/LICENSE)<br>
 
 
 ```Command-Mode```Users with permission```breakwarn.allow```can use```/breakwarn```and receive warnings
