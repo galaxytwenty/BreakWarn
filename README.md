@@ -37,9 +37,6 @@ https://github.com/galaxytwenty/BreakWarn/blob/main/LICENSE)<br>
 - [ ] Add shear
 
 
-### License:
-This Plugin has the [Apache License 2.0](/LICENSE)
-Suggestions ?, let me know
-
+Suggestions ?, let me know !<br>
 Pocketmine-MP API4
 [GLX20]
