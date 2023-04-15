@@ -98,12 +98,16 @@ class breakwarnTool extends Command implements PluginOwned
         $lore = $item->getLore();
         $lore[] = "BreakWarn (" . $args[0] . ")";
         $item->setLore($lore);
+
+
+
+
         $item->getNamedTag()->setString($name, $value);
+        $item->addEnchantment($this->plugin->getEnchantment());
         $sender->getInventory()->setItemInHand($item);
         $sender->sendMessage($this->plugin->messages->get("createNbt"));
         return true;
     }
-
 
 
     public function getOwningPlugin(): Plugin
