@@ -56,9 +56,9 @@ class Main extends PluginBase implements Listener
     }
 
     private function makeEnchantment() {
-        EnchantmentIdMap::getInstance()->register(198, new Enchantment("BreakWarn", Rarity::MYTHIC, ItemFlags::ALL, ItemFlags::ALL,1));//@phpstan-ignore-line
-        $enchantment = EnchantmentIdMap::getInstance()->fromId(198);//@phpstan-ignore-line
-        $this->enchInst = new EnchantmentInstance($enchantment, 1);
+        EnchantmentIdMap::getInstance()->register(198, new Enchantment("BreakWarn", Rarity::MYTHIC, ItemFlags::ALL, ItemFlags::ALL,1));
+        $enchantment = EnchantmentIdMap::getInstance()->fromId(198);
+        $this->enchantmentInst = new EnchantmentInstance($enchantment, 1);
     }
 
     private function loadLanguageFile(string $langCode) : void {
