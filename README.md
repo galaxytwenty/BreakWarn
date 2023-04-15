@@ -32,6 +32,7 @@ https://github.com/galaxytwenty/BreakWarn/blob/main/LICENSE)<br>
 - [x] Warn is toggleable
 - [x] BreakWarn per Tool (Tools can have BreakWarn)
 - [x] BreakGuard Option (Make tool useless before breaks)
+- [x] BreakWarn Tools have an enchantment
 
 ### TODO-List
 - [ ] Add shear
