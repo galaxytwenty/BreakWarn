@@ -4,24 +4,21 @@ namespace GLX20\BreakWarn;
 
 use GLX20\BreakWarn\commands\breakwarnCommand;
 use GLX20\BreakWarn\commands\breakwarnTool;
-use pocketmine\block\BlockToolType;
-use pocketmine\command\Command;
-use pocketmine\command\CommandSender;
+use pocketmine\data\bedrock\EnchantmentIdMap;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\Listener;
 use pocketmine\item\Axe;
+use pocketmine\item\enchantment\Enchantment;
+use pocketmine\item\enchantment\EnchantmentInstance;
+use pocketmine\item\enchantment\ItemFlags;
+use pocketmine\item\enchantment\Rarity;
 use pocketmine\item\Hoe;
-use pocketmine\item\Item;
 use pocketmine\item\Pickaxe;
 use pocketmine\item\Shovel;
-use pocketmine\item\Sword;
 use pocketmine\item\TieredTool;
 use pocketmine\item\Tool;
 use pocketmine\item\ToolTier;
-use pocketmine\item\VanillaItems;
-use pocketmine\nbt\tag\CompoundTag;
-use pocketmine\nbt\tag\StringTag;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
@@ -33,6 +30,7 @@ class Main extends PluginBase implements Listener
     public $messages;
     public $config;
     public $configversion = "1.0";
+    public EnchantmentInstance $enchantmentInst;
 
     public function onEnable() : void {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
@@ -40,28 +38,37 @@ class Main extends PluginBase implements Listener
         $this->saveResource("config.yml");
         $this->config = new Config($this->getDataFolder() . "config.yml", 2);
         $selectedLanguage = $this->config->get("selectedLanguage");
-
+        $this->makeEnchantment();
         if($this->config->get("breakwarn_mode") === "command") {
             $this->getServer()->getCommandMap()->register('breakwarn', new breakwarnCommand($this));
         }
         if($this->config->get("breakwarn_mode") === "tool"){
             $this->getServer()->getCommandMap()->register('breakwarn', new breakwarnTool($this));
         }
-
         if ($selectedLanguage === "de") {
             $this->loadLanguageFile("de_DE");
         } elseif ($selectedLanguage === "en") {
             $this->loadLanguageFile("en_EN");
         }
-
         if($this->config->get("config_version") != $this->configversion or empty($this->config->get("config_version"))){
             $this->getServer()->getLogger()->notice("§b[BreakWarn] ".$this->messages->get("wrongversion"));
         }
     }
 
+    private function makeEnchantment() {
+        EnchantmentIdMap::getInstance()->register(198, new Enchantment("BreakWarn", Rarity::MYTHIC, ItemFlags::ALL, ItemFlags::ALL,1));//@phpstan-ignore-line
+        $enchantment = EnchantmentIdMap::getInstance()->fromId(198);//@phpstan-ignore-line
+        $this->enchInst = new EnchantmentInstance($enchantment, 1);
+    }
+
     private function loadLanguageFile(string $langCode) : void {
         $this->saveResource($langCode . ".yml");
         $this->messages = new Config($this->getDataFolder() . $langCode . ".yml", 2);
+    }
+
+    public function getEnchantment(): EnchantmentInstance
+    {
+        return $this->enchantmentInst;
     }
 
     public function onBlockBreak(BlockBreakEvent $event) : void
@@ -165,4 +172,5 @@ class Main extends PluginBase implements Listener
             $this->sendItemWarnings($player, $item, 'Axe');
         }
     }
+
 }
